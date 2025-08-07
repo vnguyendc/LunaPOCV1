@@ -259,41 +259,7 @@ struct TodaysHormoneCard: View {
     }
 }
 
-// MARK: - Hormone Row View
-struct HormoneRowView: View {
-    let name: String
-    let value: String
-    let trend: HormoneTrend
-    let level: HormoneLevel
-    
-    var body: some View {
-        HStack {
-            Text(name)
-                .font(.subheadline)
-                .fontWeight(.medium)
-            
-            Spacer()
-            
-            HStack(spacing: 4) {
-                Text(value)
-                    .font(.subheadline)
-                    .foregroundColor(.primary)
-                
-                Image(systemName: trend.iconName)
-                    .font(.caption)
-                    .foregroundColor(trend.color)
-                
-                Text(level.displayName)
-                    .font(.caption)
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 2)
-                    .background(level.color.opacity(0.2))
-                    .foregroundColor(level.color)
-                    .cornerRadius(4)
-            }
-        }
-    }
-}
+// MARK: - Hormone Row View moved to SharedComponents.swift
 
 // MARK: - Quick Actions Card
 struct QuickActionsCard: View {
@@ -344,46 +310,7 @@ struct QuickActionsCard: View {
     }
 }
 
-// MARK: - Supporting Enums
-enum HormoneTrend {
-    case rising, falling, stable
-    
-    var iconName: String {
-        switch self {
-        case .rising: return "arrow.up.right"
-        case .falling: return "arrow.down.right"
-        case .stable: return "minus"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .rising: return .green
-        case .falling: return .red
-        case .stable: return .gray
-        }
-    }
-}
-
-enum HormoneLevel {
-    case low, normal, high
-    
-    var displayName: String {
-        switch self {
-        case .low: return "Low"
-        case .normal: return "Normal"
-        case .high: return "High"
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .low: return .blue
-        case .normal: return .green
-        case .high: return .orange
-        }
-    }
-}
+// MARK: - Supporting Enums moved to SharedComponents.swift
 
 #Preview {
     HomeView()
